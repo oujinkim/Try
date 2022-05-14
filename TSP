@@ -1,0 +1,91 @@
+package practice;
+import java.io.*;
+import java.util.Arrays;
+import java.util.Random;
+
+
+
+public class TSP {
+
+    public static int parents[];
+    int V = 7;
+    int E = 11;
+    final static int M = Integer.MAX_VALUE;
+    static int [][] Array = new int[][]{
+            {M,2,3,10,M,M,M},// 123 133 1410
+            {2,M,3,M,M,M,7},// 212 233 237
+            {3,3,M,M,6,3,4},//
+            {10,M,M,M,1,M,M},
+            {M,M,6,1,M,23,M},
+            {M,M,3,M,23,M,9},
+            {M,7,4,M,M,9,M},
+    };
+
+    static int [][] Array2 = new int[][]{
+            {M,2,3,M,M,M,M},
+            {M,M,M,M,M,M,M},
+            {M,M,M,M,6,3,4},
+            {M,M,M,M,M,M,M},
+            {M,M,M,1,M,M,M},
+            {M,M,M,M,M,M,M},
+            {M,M,M,M,M,M,M}
+    };
+
+    static int[][] edges = new int[11][3];
+    //Arrays.fill(edges,0);
+    static int [][] Change(int[][] Array){
+        int k=0;
+        for(int i=0;i< 7;i++) {
+            edges[k][0] = i;
+            for(int j=0;j< Array.length;j++) {
+                if(Array[i][j]!=M) {
+                    if(Array[i][j]!=edges[k][j])
+                    {
+
+                        k++;
+                    }
+                }
+            }
+        }
+        return edges;
+    };
+
+    public static int[][] Tsp(int[][] Array) {
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+
+        int r = random.nextInt(Array.length);
+
+        return Array;
+    }
+
+    public static int[][] Mst(int[][] Array){
+
+        return Array;
+    }
+
+
+    public static void main(String[] args) {
+        for(int i =0;i<Array.length;i++){
+            for(int j=0;j< Array.length;j++){
+                if(Array[i][j] == M){
+                    System.out.print("xx ");
+                }
+                else{
+                    System.out.printf("%02d ",Array[i][j]);
+                }
+            }
+            System.out.println();
+        }
+        edges = Change(edges);
+        for(int i =0;i<11;i++){
+            for(int j=0;j< 3;j++){
+                System.out.print(edges[i][j]);
+            }
+            System.out.println();
+        }
+//        Mst(Array);
+//        Tsp(Array);
+    }
+
+}
